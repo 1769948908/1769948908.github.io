@@ -80,19 +80,43 @@
 
 
 
-<meta name="description" content="源码下载导入eclipse1首先
-源码下载导入eclipse1首先">
+<meta name="description" content="hljs.tabReplace = &apos; &apos;;
+hljs.initHighlightingOnLoad();
+
+
+
+
+方法乱用场景：需要将一个String类型的转为int类型实现：使用Integer中的方法
+public class IntegerTest {
+    public static void main(String [] args){
+        String str = &amp;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Tomcat2">
-<meta property="og:url" content="http://yoursite.com/2016/04/19/Tomcat2/index.html">
-<meta property="og:site_name" content="码">
-<meta property="og:description" content="源码下载导入eclipse1首先
-源码下载导入eclipse1首先">
-<meta property="og:updated_time" content="2016-04-19T10:07:44.250Z">
+<meta property="og:title" content="Integer.getInteger(String s)分析">
+<meta property="og:url" content="http://yoursite.com/2016/04/19/Interger.getInteger/index.html">
+<meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="hljs.tabReplace = &apos; &apos;;
+hljs.initHighlightingOnLoad();
+
+
+
+
+方法乱用场景：需要将一个String类型的转为int类型实现：使用Integer中的方法
+public class IntegerTest {
+    public static void main(String [] args){
+        String str = &amp;">
+<meta property="og:updated_time" content="2016-08-05T04:58:22.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Tomcat2">
-<meta name="twitter:description" content="源码下载导入eclipse1首先
-源码下载导入eclipse1首先">
+<meta name="twitter:title" content="Integer.getInteger(String s)分析">
+<meta name="twitter:description" content="hljs.tabReplace = &apos; &apos;;
+hljs.initHighlightingOnLoad();
+
+
+
+
+方法乱用场景：需要将一个String类型的转为int类型实现：使用Integer中的方法
+public class IntegerTest {
+    public static void main(String [] args){
+        String str = &amp;">
 
 
 
@@ -110,7 +134,7 @@
   };
 </script>
 
-  <title> Tomcat2 | 码 </title>
+  <title> Integer.getInteger(String s)分析 | 个人博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -141,7 +165,7 @@
   <div class="custom-logo-site-title">
     <a href="/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <span class="site-title">码</span>
+      <span class="site-title">个人博客</span>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -250,7 +274,7 @@
             
             
               
-                Tomcat2
+                Integer.getInteger(String s)分析
               
             
           </h1>
@@ -309,8 +333,141 @@
       
 
       
-        <h2 id="源码下载"><a href="#源码下载" class="headerlink" title="源码下载"></a>源码下载</h2><h3 id="导入eclipse"><a href="#导入eclipse" class="headerlink" title="导入eclipse"></a>导入eclipse</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">首先</span><br></pre></td></tr></table></figure>
-<h2 id="源码下载-1"><a href="#源码下载-1" class="headerlink" title="源码下载"></a>源码下载</h2><h3 id="导入eclipse-1"><a href="#导入eclipse-1" class="headerlink" title="导入eclipse"></a>导入eclipse</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">首先</span><br></pre></td></tr></table></figure>
+        <p><link rel="stylesheet" href="http://yandex.st/highlightjs/6.1/styles/default.min.css"></p>
+<script src="http://yandex.st/highlightjs/6.1/highlight.min.js"></script>
+<script>
+hljs.tabReplace = ' ';
+hljs.initHighlightingOnLoad();
+</script>
+
+
+
+<h3 id="方法乱用"><a href="#方法乱用" class="headerlink" title="方法乱用"></a>方法乱用</h3><p>场景：需要将一个String类型的转为int类型<br>实现：使用Integer中的方法</p>
+<pre><code>public class IntegerTest {
+    public static void main(String [] args){
+        String str = &quot;22&quot;;
+        System.out.println(Integer.getInteger(str));
+        System.out.println(Integer.valueOf(str));
+        System.out.println(Integer.parseInt(str));
+    }
+}
+期待输出：
+22
+22
+22
+实际输出：
+null
+22
+22
+</code></pre><a id="more"></a>
+<p>#####Integer.getInteger(String s)<br>对于<code>Integer.getInteger(String nm)</code>我们使用时看到有getInteger和入参为String就直接用了。但是但是这是个**坑：<br>直接上源码：</p>
+<pre><code>public static Integer getInteger(String nm) {
+    return getInteger(nm, null);
+}
+
+public static Integer getInteger(String nm, Integer val) {
+    String v = null;
+    try {
+        v = System.getProperty(nm);  //获取系统属性
+    } catch (IllegalArgumentException e) {
+    } catch (NullPointerException e) {
+    }
+    if (v != null) {
+        try {
+            return Integer.decode(v);
+        } catch (NumberFormatException e) {
+        }
+    }
+    return val;
+}
+</code></pre><p> 在这里面其实是通过key获取系统属性,并不是把String转为Int。</p>
+<p>#####Integer.valueOf(String s)</p>
+<pre><code> public static Integer valueOf(String s, int radix) throws NumberFormatException {
+       return Integer.valueOf(parseInt(s,radix));
+}
+public static Integer valueOf(int i) {
+    assert IntegerCache.high &gt;= 127;
+    if (i &gt;= IntegerCache.low &amp;&amp; i &lt;= IntegerCache.high)
+        return IntegerCache.cache[i + (-IntegerCache.low)];
+    return new Integer(i);
+}
+</code></pre><p>   <code>Integer.valueOf(String)</code>方法假设String参数表达的是一个数值，会把该数值String转化成Integer。也就是说， <code>Integer.valueOf(&quot;22&quot;)</code> 得到一个Integer对象，其值是22。</p>
+<h5 id="Integer-parseInt-String-s"><a href="#Integer-parseInt-String-s" class="headerlink" title="Integer.parseInt(String s)"></a>Integer.parseInt(String s)</h5><pre><code>public static int parseInt(String s) throws NumberFormatException {
+    return parseInt(s,10);
+}
+public static int parseInt(String s, int radix)
+            throws NumberFormatException
+ {
+
+
+    if (s == null) {
+        throw new NumberFormatException(&quot;null&quot;);
+    }
+
+    if (radix &lt; Character.MIN_RADIX) {
+        throw new NumberFormatException(&quot;radix &quot; + radix +
+                                        &quot; less than Character.MIN_RADIX&quot;);
+    }
+
+    if (radix &gt; Character.MAX_RADIX) {
+        throw new NumberFormatException(&quot;radix &quot; + radix +
+                                        &quot; greater than Character.MAX_RADIX&quot;);
+    }
+
+    int result = 0;
+    boolean negative = false;
+    int i = 0, len = s.length();
+    int limit = -Integer.MAX_VALUE;
+    int multmin;
+    int digit;
+
+    if (len &gt; 0) {
+        char firstChar = s.charAt(0);
+        if (firstChar &lt; &apos;0&apos;) { // Possible leading &quot;+&quot; or &quot;-&quot;
+            if (firstChar == &apos;-&apos;) {
+                negative = true;
+                limit = Integer.MIN_VALUE;
+            } else if (firstChar != &apos;+&apos;)
+                throw NumberFormatException.forInputString(s);
+
+            if (len == 1) // Cannot have lone &quot;+&quot; or &quot;-&quot;
+                throw NumberFormatException.forInputString(s);
+            i++;
+        }
+        multmin = limit / radix;
+        while (i &lt; len) {
+            // Accumulating negatively avoids surprises near MAX_VALUE
+            digit = Character.digit(s.charAt(i++),radix);
+            if (digit &lt; 0) {
+                throw NumberFormatException.forInputString(s);
+            }
+            if (result &lt; multmin) {
+                throw NumberFormatException.forInputString(s);
+            }
+            result *= radix;
+            if (result &lt; limit + digit) {
+                throw NumberFormatException.forInputString(s);
+            }
+            result -= digit;
+        }
+    } else {
+        throw NumberFormatException.forInputString(s);
+    }
+    return negative ? result : -result;
+}
+</code></pre><p><code>Integer.parseTnt(String s)</code>这里会调用 parseInt(String s, int radix)，s为要转换的字符串，radix为进制。调用的时候设置为10进制。在解析是首先是检查第一个字符是不是 <code>-</code>,如果第二个不是<code>+</code>抛出异常。</p>
+<h5 id="对于Long-getLong-String-s-原理也是一样的，获取系统属性"><a href="#对于Long-getLong-String-s-原理也是一样的，获取系统属性" class="headerlink" title="对于Long.getLong(String s) 原理也是一样的，获取系统属性"></a>对于Long.getLong(String s) 原理也是一样的，获取系统属性</h5><h5 id="对于Boolean-getBoolean-String-这个感觉更坑"><a href="#对于Boolean-getBoolean-String-这个感觉更坑" class="headerlink" title="对于Boolean.getBoolean(String)这个感觉更坑"></a>对于Boolean.getBoolean(String)这个感觉更坑</h5><p><code>Boolean.getBoolean(&quot;true&quot;)</code>返回的false</p>
+<pre><code>public static boolean getBoolean(String name) {
+    boolean result = false;
+    try {
+        result = toBoolean(System.getProperty(name));
+    } catch (IllegalArgumentException e) {
+    } catch (NullPointerException e) {
+    }
+    return result;
+}
+</code></pre><p>###总结<br>为了不随意使用类方法引起血案在使用时一定要看看他的实现，同时也学习下别人的思想！</p>
+
       
     </div>
     
@@ -415,8 +572,8 @@
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/322901.jpg"
-               alt="MaEr" />
-          <p class="site-author-name" itemprop="name">MaEr</p>
+               alt="刘慧飞" />
+          <p class="site-author-name" itemprop="name">刘慧飞</p>
           <p class="site-description motion-element" itemprop="description"></p>
         </div>
         <nav class="site-state motion-element">
@@ -493,7 +650,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#源码下载"><span class="nav-number">1.</span> <span class="nav-text">源码下载</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#导入eclipse"><span class="nav-number">1.1.</span> <span class="nav-text">导入eclipse</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#源码下载-1"><span class="nav-number">2.</span> <span class="nav-text">源码下载</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#导入eclipse-1"><span class="nav-number">2.1.</span> <span class="nav-text">导入eclipse</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#方法乱用"><span class="nav-number">1.</span> <span class="nav-text">方法乱用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Integer-parseInt-String-s"><span class="nav-number">1.0.1.</span> <span class="nav-text">Integer.parseInt(String s)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#对于Long-getLong-String-s-原理也是一样的，获取系统属性"><span class="nav-number">1.0.2.</span> <span class="nav-text">对于Long.getLong(String s) 原理也是一样的，获取系统属性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#对于Boolean-getBoolean-String-这个感觉更坑"><span class="nav-number">1.0.3.</span> <span class="nav-text">对于Boolean.getBoolean(String)这个感觉更坑</span></a></li></ol></li></ol></li></ol></div>
             
           </div>
         </section>
@@ -516,7 +673,7 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">MaEr</span>
+  <span class="author" itemprop="copyrightHolder">刘慧飞</span>
 </div>
 
 <div class="powered-by">
