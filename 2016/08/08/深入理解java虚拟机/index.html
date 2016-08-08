@@ -86,18 +86,18 @@
 <meta property="og:url" content="http://yoursite.com/2016/08/08/深入理解java虚拟机/index.html">
 <meta property="og:site_name" content="个人博客">
 <meta property="og:description" content="Java作为目前使用最多，使用范围最广泛的开发语言，说明其在技术上还是有很大的优点的。我们都知道Java是一种跨平台的语言，通俗的讲就是一份代码可以到各种系统平台上运行，这样减少了更换平台引起的代码兼容等一系列的问题。Java的这种实现原理就是因为Java提供了一种虚拟机-Jvm，Java代码的编译运行都是在虚拟机上的，由虚拟机翻译成机器码执行。最近学习了些Jvm的知识，在这里做个记录总结，有理解">
-<meta property="og:image" content="http://yoursite.com/../uploads/JVM.png">
-<meta property="og:image" content="http://yoursite.com/../uploads/beforeMark.png">
-<meta property="og:image" content="http://yoursite.com/../uploads/afterMark.png">
-<meta property="og:image" content="http://yoursite.com/../uploads/beforeCopy.png">
-<meta property="og:image" content="http://yoursite.com/../uploads/afterCopy.png">
-<meta property="og:image" content="http://yoursite.com/../uploads/beforeRemove.png">
-<meta property="og:image" content="http://yoursite.com/../uploads/afterRemove.png">
-<meta property="og:updated_time" content="2016-08-08T10:14:33.000Z">
+<meta property="og:image" content="http://yoursite.com/uploads/JVM.png">
+<meta property="og:image" content="http://yoursite.com/uploads/beforeMark.png">
+<meta property="og:image" content="http://yoursite.com/uploads/afterMark.png">
+<meta property="og:image" content="http://yoursite.com/uploads/beforeCopy.png">
+<meta property="og:image" content="http://yoursite.com/uploads/afterCopy.png">
+<meta property="og:image" content="http://yoursite.com/uploads/beforeRemove.png">
+<meta property="og:image" content="http://yoursite.com/uploads/afterRemove.png">
+<meta property="og:updated_time" content="2016-08-08T10:27:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java虚拟机分析">
 <meta name="twitter:description" content="Java作为目前使用最多，使用范围最广泛的开发语言，说明其在技术上还是有很大的优点的。我们都知道Java是一种跨平台的语言，通俗的讲就是一份代码可以到各种系统平台上运行，这样减少了更换平台引起的代码兼容等一系列的问题。Java的这种实现原理就是因为Java提供了一种虚拟机-Jvm，Java代码的编译运行都是在虚拟机上的，由虚拟机翻译成机器码执行。最近学习了些Jvm的知识，在这里做个记录总结，有理解">
-<meta name="twitter:image" content="http://yoursite.com/../uploads/JVM.png">
+<meta name="twitter:image" content="http://yoursite.com/uploads/JVM.png">
 
 
 
@@ -317,7 +317,8 @@
         <p>Java作为目前使用最多，使用范围最广泛的开发语言，说明其在技术上还是有很大的优点的。我们都知道Java是一种跨平台的语言，通俗的讲就是一份代码可以到各种系统平台上运行，这样减少了更换平台引起的代码兼容等一系列的问题。Java的这种实现原理就是因为Java提供了一种虚拟机-Jvm，Java代码的编译运行都是在虚拟机上的，由虚拟机翻译成机器码执行。最近学习了些Jvm的知识，在这里做个记录总结，有理解错误的地方，欢迎指正。  </p>
 <hr>
 <h2 id="Java的内存区域和内存溢出的异常"><a href="#Java的内存区域和内存溢出的异常" class="headerlink" title="Java的内存区域和内存溢出的异常"></a>Java的内存区域和内存溢出的异常</h2><p>我们知道Java虚拟机有良好的内存管理机制，不需要手动的为new出来的对象去写delete/free代码，虽然在JVN的管理下不容易出现内存的问题，但是一旦出现，如果不了解Java的内存机制，排查问题又变的困难。</p>
-<h3 id="Java的内存区域"><a href="#Java的内存区域" class="headerlink" title="Java的内存区域"></a>Java的内存区域</h3><p>Java虚拟机在执行Java程序的过程中会把他所管理的内存划分为若干个不同的数据区域，根据Java虚拟机规范的规定JVM所管理的内存主要是由以下几个运行时数据区域：程序计数器、Java虚拟机栈、本地方法栈、Java堆、方法区。下面详细介绍各个区域。<br><img src="../uploads/JVM.png" alt="image"><br><a id="more"></a></p>
+<h3 id="Java的内存区域"><a href="#Java的内存区域" class="headerlink" title="Java的内存区域"></a>Java的内存区域</h3><p>Java虚拟机在执行Java程序的过程中会把他所管理的内存划分为若干个不同的数据区域，根据Java虚拟机规范的规定JVM所管理的内存主要是由以下几个运行时数据区域：程序计数器、Java虚拟机栈、本地方法栈、Java堆、方法区。下面详细介绍各个区域。<br><a id="more"></a></p>
+<p><img src="/uploads/JVM.png" alt="image"><br><!--more--></p>
 <h4 id="程序计数器"><a href="#程序计数器" class="headerlink" title="程序计数器"></a>程序计数器</h4><p>一块较小的内存空间，是当前线程所执行的字节码的行号指示器，字节码解释器工作时通过改变该计数器的值来选择下一条需要执行的字节码指令，分支、跳转、循环等基础功能都要依赖该程序计数器来实现。多线程时，当线程数超过CPU数量或CPU内核数量，线程之间就要根据时间片轮询抢夺CPU时间资源。因此每个线程有要有一个独立的程序计数器，各线程间的计数器互不影响，因此该区域是线程私有的。当程序执行Java方法，那么计数器记录正在执行的Java字节码地址，如果执行的是Native方法，计数器为Undefined。  </p>
 <p>该区域没有规定任何的OOM，也是唯一一个没有规定的区域。</p>
 <h4 id="虚拟机栈"><a href="#虚拟机栈" class="headerlink" title="虚拟机栈"></a>虚拟机栈</h4><p>该区域线程私有的，与线程在同一时间创建，一同消失。描述的是JAVA方法执行的内存模型。每个方法执行时都会创建一个桢栈，用于支持续虚拟机进行方法调用和方法执行的数据结构。对于执行引擎来讲，活动线程中，只有栈顶的栈帧是有效的，称为当前栈帧，这个栈帧所关联的方法称为当前方法，每一个方法从调用到执行完成就对应着栈帧在虚拟机中入栈到出栈的过程。栈帧中需要多大的局部变量表在编译程序代码时都已经完全确定了，并且写入了方法表的Code属性之中。因此，一个栈帧需要分配多少内存是完全固定的，不会受到程序运行期变量数据的影响。</p>
@@ -354,10 +355,10 @@
 <hr>
 <h2 id="垃圾收集算法"><a href="#垃圾收集算法" class="headerlink" title="垃圾收集算法"></a>垃圾收集算法</h2><p>由于Java虚拟机规范并没有对如何实现垃圾收集器做出明确的规定，因此各个厂商的虚拟机可以采用不同的方式来实现垃圾收集器，同时也出现很多种垃圾回收器，在这里只总结下常见的垃圾收集算法的核心思想。</p>
 <h4 id="标记清除算法"><a href="#标记清除算法" class="headerlink" title="标记清除算法"></a>标记清除算法</h4><p>标记清除算法是最基础的回收算法，思想很简单。标记0清除算法分为两个阶段：标记阶段和清除阶段。标记阶段的是标记出所有需要被回收的对象，清除阶段就是回收被标记的对象所占用的空间。具体的过程如下图：</p>
-<p>　　　　　　　　　　<img src="../uploads/beforeMark.png" alt="标记前"><br>　　　　　　　　　　<strong>清除前</strong><br>　　　　　　　　　　<br>　　　　　　　　<br>　　　　　　　　<br>　　　　　　　　　　<br>　　　　　　　　　　<img src="../uploads/afterMark.png" alt="标记前"><br>　　　　　　　　　　<strong>清除后</strong>　<br>　　　　　　　　　　<br>　　　　　　　　　　<br>　　　　　　　　　　<br>　　　　　　　　　　<br>　　　　　　　　　　　　<br>使用这种方式清除后会产生大量的内存碎片，不利于下次分配，这样会导致效率过低。为了解决效率问题，出现了一种复制的算法。</p>
+<p>　　　　　　　　　　<img src="/uploads/beforeMark.png" alt="标记前"><br>　　　　　　　　　　<strong>清除前</strong><br>　　　　　　　　　　<br>　　　　　　　　<br>　　　　　　　　<br>　　　　　　　　　　<br>　　　　　　　　　　<img src="/uploads/afterMark.png" alt="标记前"><br>　　　　　　　　　　<strong>清除后</strong>　<br>　　　　　　　　　　<br>　　　　　　　　　　<br>　　　　　　　　　　<br>　　　　　　　　　　<br>　　　　　　　　　　　　<br>使用这种方式清除后会产生大量的内存碎片，不利于下次分配，这样会导致效率过低。为了解决效率问题，出现了一种复制的算法。</p>
 <h4 id="复制算法"><a href="#复制算法" class="headerlink" title="复制算法"></a>复制算法</h4><p>它将可用内存按容量划分为大小相等的两块，每次只使用其中的一块。当这一块的内存用完了，就将还存活着的对象复制到另外一块上面，然后再把已使用的内存空间一次清理掉，这样一来就不容易出现内存碎片的问题。具体过程如下图所示：</p>
-<p>　　　　　　　　　　<img src="../uploads/beforeCopy.png" alt="标记前"><br>　　　　　　　　　　<strong>回收前</strong><br>　　　　　　　　　　<br>　　　　　　　　<br>　　　　　　　　<br>　　　　　　　　　　<br>　　　　　　　　　　<img src="../uploads/afterCopy.png" alt="标记前"><br>　　　　　　　　　　<strong>回收后</strong>　<br>这种算法虽然实现简单，运行高效且不容易产生内存碎片，但是却对内存空间的使用做出了高昂的代价，因为能够使用的内存缩减到原来的一半。</p>
-<h4 id="标记-整理算法"><a href="#标记-整理算法" class="headerlink" title="标记-整理算法"></a>标记-整理算法</h4><p>　Copying算法的效率跟存活对象的数目多少有很大的关系，如果存活对象很多，那么Copying算法的效率将会大大降低。为了解决这种问题，有人提出了Mark-Compact算法。该算法标记阶段和标记-清除算法一样，但是在完成标记之后，它不是直接清理可回收对象，而是将存活对象都向一端移动，然后清理掉端边界以外的内存。具体过程如下图所示：　　　　　　　　　　　　　　<br>　　　　　　<br>　　　　　　<br>　　　　　　<br>　　　　　　<br>　　　　　　<br>　　　　　　　　　　<img src="../uploads/beforeRemove.png" alt="标记前"><br>　　　　　　　　　　<strong>回收前</strong><br>　　　　　　　　　　<br>　　　　　　　　<br>　　　　<br>　　　　　　　　　　<br>　　　　　　　　　　<img src="../uploads/afterRemove.png" alt="标记前"><br>　　　　　　　　　　<strong>回收后</strong>　  
+<p>　　　　　　　　　　<img src="/uploads/beforeCopy.png" alt="标记前"><br>　　　　　　　　　　<strong>回收前</strong><br>　　　　　　　　　　<br>　　　　　　　　<br>　　　　　　　　<br>　　　　　　　　　　<br>　　　　　　　　　　<img src="/uploads/afterCopy.png" alt="标记前"><br>　　　　　　　　　　<strong>回收后</strong>　<br>这种算法虽然实现简单，运行高效且不容易产生内存碎片，但是却对内存空间的使用做出了高昂的代价，因为能够使用的内存缩减到原来的一半。</p>
+<h4 id="标记-整理算法"><a href="#标记-整理算法" class="headerlink" title="标记-整理算法"></a>标记-整理算法</h4><p>　Copying算法的效率跟存活对象的数目多少有很大的关系，如果存活对象很多，那么Copying算法的效率将会大大降低。为了解决这种问题，有人提出了Mark-Compact算法。该算法标记阶段和标记-清除算法一样，但是在完成标记之后，它不是直接清理可回收对象，而是将存活对象都向一端移动，然后清理掉端边界以外的内存。具体过程如下图所示：　　　　　　　　　　　　　　<br>　　　　　　<br>　　　　　　<br>　　　　　　<br>　　　　　　<br>　　　　　　<br>　　　　　　　　　　<img src="/uploads/beforeRemove.png" alt="标记前"><br>　　　　　　　　　　<strong>回收前</strong><br>　　　　　　　　　　<br>　　　　　　　　<br>　　　　<br>　　　　　　　　　　<br>　　　　　　　　　　<img src="/uploads/afterRemove.png" alt="标记前"><br>　　　　　　　　　　<strong>回收后</strong>　  
 　  
 　  
 　
