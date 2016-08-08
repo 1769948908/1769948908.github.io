@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Java API," />
+  <meta name="keywords" content="git," />
 
 
 
@@ -85,38 +85,32 @@ hljs.initHighlightingOnLoad();
 
 
 
-
-方法乱用场景：需要将一个String类型的转为int类型实现：使用Integer中的方法
-public class IntegerTest {
-    public static void main(String [] args){
-        String str = &amp;">
+背景 我们经常在同一台电脑向不同的仓库提交代码，比如一个是是要使用公司的git仓库，一个是自己的github，为了不用每次都输入密码，我们会配置ssh key。  
+在mac下配置多个ssh_key首先打开终端输入：ssh-keygen -t rsa -C &amp;quot;email">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Integer.getInteger(String s)分析">
-<meta property="og:url" content="http://yoursite.com/2016/04/19/Interger.getInteger/index.html">
+<meta property="og:title" content="mac下配置多个ssh_key">
+<meta property="og:url" content="http://yoursite.com/2016/08/08/ssh_key/index.html">
 <meta property="og:site_name" content="个人博客">
 <meta property="og:description" content="hljs.tabReplace = &apos; &apos;;
 hljs.initHighlightingOnLoad();
 
 
 
-
-方法乱用场景：需要将一个String类型的转为int类型实现：使用Integer中的方法
-public class IntegerTest {
-    public static void main(String [] args){
-        String str = &amp;">
-<meta property="og:updated_time" content="2016-08-05T05:02:10.000Z">
+背景 我们经常在同一台电脑向不同的仓库提交代码，比如一个是是要使用公司的git仓库，一个是自己的github，为了不用每次都输入密码，我们会配置ssh key。  
+在mac下配置多个ssh_key首先打开终端输入：ssh-keygen -t rsa -C &amp;quot;email">
+<meta property="og:image" content="http://yoursite.com/uploads/ssh_key.png">
+<meta property="og:image" content="http://yoursite.com/uploads/ssh2.png">
+<meta property="og:updated_time" content="2016-08-08T14:40:03.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Integer.getInteger(String s)分析">
+<meta name="twitter:title" content="mac下配置多个ssh_key">
 <meta name="twitter:description" content="hljs.tabReplace = &apos; &apos;;
 hljs.initHighlightingOnLoad();
 
 
 
-
-方法乱用场景：需要将一个String类型的转为int类型实现：使用Integer中的方法
-public class IntegerTest {
-    public static void main(String [] args){
-        String str = &amp;">
+背景 我们经常在同一台电脑向不同的仓库提交代码，比如一个是是要使用公司的git仓库，一个是自己的github，为了不用每次都输入密码，我们会配置ssh key。  
+在mac下配置多个ssh_key首先打开终端输入：ssh-keygen -t rsa -C &amp;quot;email">
+<meta name="twitter:image" content="http://yoursite.com/uploads/ssh_key.png">
 
 
 
@@ -134,7 +128,7 @@ public class IntegerTest {
   };
 </script>
 
-  <title> Integer.getInteger(String s)分析 | 个人博客 </title>
+  <title> mac下配置多个ssh_key | 个人博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -274,7 +268,7 @@ public class IntegerTest {
             
             
               
-                Integer.getInteger(String s)分析
+                mac下配置多个ssh_key
               
             
           </h1>
@@ -286,8 +280,8 @@ public class IntegerTest {
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-19T17:58:26+08:00" content="2016-04-19">
-              2016-04-19
+            <time itemprop="dateCreated" datetime="2016-08-08T17:58:26+08:00" content="2016-08-08">
+              2016-08-08
             </time>
           </span>
 
@@ -300,8 +294,8 @@ public class IntegerTest {
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
+                  <a href="/categories/git/" itemprop="url" rel="index">
+                    <span itemprop="name">git</span>
                   </a>
                 </span>
 
@@ -341,133 +335,44 @@ hljs.initHighlightingOnLoad();
 </script>
 
 
+<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p> 我们经常在同一台电脑向不同的仓库提交代码，比如一个是是要使用公司的git仓库，一个是自己的github，为了不用每次都输入密码，我们会配置ssh key。  </p>
+<h3 id="在mac下配置多个ssh-key"><a href="#在mac下配置多个ssh-key" class="headerlink" title="在mac下配置多个ssh_key"></a>在mac下配置多个ssh_key</h3><h4 id="首先打开终端输入："><a href="#首先打开终端输入：" class="headerlink" title="首先打开终端输入："></a>首先打开终端输入：</h4><pre><code>ssh-keygen -t rsa -C &quot;email@qq.com&quot;
+输入文件名称：如id_rsa_githu_1
+Enter file in which to save the key (/Users/huifei.lhf/.ssh/id_rsa): id_rsa_githu_1 
+一路Enter下去  
 
-<h3 id="方法乱用"><a href="#方法乱用" class="headerlink" title="方法乱用"></a>方法乱用</h3><p>场景：需要将一个String类型的转为int类型<br>实现：使用Integer中的方法</p>
-<pre><code>public class IntegerTest {
-    public static void main(String [] args){
-        String str = &quot;22&quot;;
-        System.out.println(Integer.getInteger(str));
-        System.out.println(Integer.valueOf(str));
-        System.out.println(Integer.parseInt(str));
-    }
-}
-期待输出：
-22
-22
-22
-实际输出：
-null
-22
-22
-</code></pre><a id="more"></a>
-<p>#####Integer.getInteger(String s)<br>对于<code>Integer.getInteger(String nm)</code>我们使用时看到有getInteger和入参为String就直接用了。但是但是这是个**坑：<br>直接上源码：</p>
-<pre><code>public static Integer getInteger(String nm) {
-    return getInteger(nm, null);
-}
+创建第二个
+ssh-keygen -t rsa -C &quot;email@qq.com&quot;
+输入文件名称：如id_rsa_githu_1
+Enter file in which to save the key (/Users/huifei.lhf/.ssh/id_rsa): id_rsa_githu_2
+一路Enter下去 
+</code></pre><a id="more"></a>          
+<p><img src="/uploads/ssh_key.png" alt="image"></p>
+<p><img src="/uploads/ssh2.png" alt="image"></p>
+<p>按照上面的步骤创建私钥和公钥</p>
+<h4 id="添加代理"><a href="#添加代理" class="headerlink" title="添加代理"></a>添加代理</h4><p>查看系统ssh-key代理,执行如下命令</p>
+<pre><code>  huifeilhfdeMacBook-Air:Documents huifei.lhf$ ssh-add -l
+The agent has no identities.
+huifeilhfdeMacBook-Air:Documents huifei.lhf$ exec ssh-agent bash
+bash-3.2$ 
+</code></pre><p> 如果已有代理，可以删除</p>
+<pre><code>$ ssh-add -D   
+</code></pre><p> 把 .ssh 目录下的2个私钥添加到 ssh-agent  </p>
+<pre><code>$ ssh-add ~/.ssh/id_rsa_github_1
+$ ssh-add ~/.ssh/id_rsa_github_2
+</code></pre><p>在.ssh下创建 config文件</p>
+<pre><code>vi config
+</code></pre><p>在config文件下添加一下内容</p>
+<pre><code>Host github.com  
+        HostName github.com  
+    PreferredAuthentications publickey
+    IdentityFile ~/.ssh/id_rsa_github_1
 
-public static Integer getInteger(String nm, Integer val) {
-    String v = null;
-    try {
-        v = System.getProperty(nm);  //获取系统属性
-    } catch (IllegalArgumentException e) {
-    } catch (NullPointerException e) {
-    }
-    if (v != null) {
-        try {
-            return Integer.decode(v);
-        } catch (NumberFormatException e) {
-        }
-    }
-    return val;
-}
-</code></pre><p> 在这里面其实是通过key获取系统属性,并不是把String转为Int。</p>
-<p>#####Integer.valueOf(String s)</p>
-<pre><code> public static Integer valueOf(String s, int radix) throws NumberFormatException {
-       return Integer.valueOf(parseInt(s,radix));
-}
-public static Integer valueOf(int i) {
-    assert IntegerCache.high &gt;= 127;
-    if (i &gt;= IntegerCache.low &amp;&amp; i &lt;= IntegerCache.high)
-        return IntegerCache.cache[i + (-IntegerCache.low)];
-    return new Integer(i);
-}
-</code></pre><p>   <code>Integer.valueOf(String)</code>方法假设String参数表达的是一个数值，会把该数值String转化成Integer。也就是说， <code>Integer.valueOf(&quot;22&quot;)</code> 得到一个Integer对象，其值是22。</p>
-<h5 id="Integer-parseInt-String-s"><a href="#Integer-parseInt-String-s" class="headerlink" title="Integer.parseInt(String s)"></a>Integer.parseInt(String s)</h5><pre><code>public static int parseInt(String s) throws NumberFormatException {
-    return parseInt(s,10);
-}
-public static int parseInt(String s, int radix)
-            throws NumberFormatException
- {
-
-
-    if (s == null) {
-        throw new NumberFormatException(&quot;null&quot;);
-    }
-
-    if (radix &lt; Character.MIN_RADIX) {
-        throw new NumberFormatException(&quot;radix &quot; + radix +
-                                        &quot; less than Character.MIN_RADIX&quot;);
-    }
-
-    if (radix &gt; Character.MAX_RADIX) {
-        throw new NumberFormatException(&quot;radix &quot; + radix +
-                                        &quot; greater than Character.MAX_RADIX&quot;);
-    }
-
-    int result = 0;
-    boolean negative = false;
-    int i = 0, len = s.length();
-    int limit = -Integer.MAX_VALUE;
-    int multmin;
-    int digit;
-
-    if (len &gt; 0) {
-        char firstChar = s.charAt(0);
-        if (firstChar &lt; &apos;0&apos;) { // Possible leading &quot;+&quot; or &quot;-&quot;
-            if (firstChar == &apos;-&apos;) {
-                negative = true;
-                limit = Integer.MIN_VALUE;
-            } else if (firstChar != &apos;+&apos;)
-                throw NumberFormatException.forInputString(s);
-
-            if (len == 1) // Cannot have lone &quot;+&quot; or &quot;-&quot;
-                throw NumberFormatException.forInputString(s);
-            i++;
-        }
-        multmin = limit / radix;
-        while (i &lt; len) {
-            // Accumulating negatively avoids surprises near MAX_VALUE
-            digit = Character.digit(s.charAt(i++),radix);
-            if (digit &lt; 0) {
-                throw NumberFormatException.forInputString(s);
-            }
-            if (result &lt; multmin) {
-                throw NumberFormatException.forInputString(s);
-            }
-            result *= radix;
-            if (result &lt; limit + digit) {
-                throw NumberFormatException.forInputString(s);
-            }
-            result -= digit;
-        }
-    } else {
-        throw NumberFormatException.forInputString(s);
-    }
-    return negative ? result : -result;
-}
-</code></pre><p><code>Integer.parseTnt(String s)</code>这里会调用 parseInt(String s, int radix)，s为要转换的字符串，radix为进制。调用的时候设置为10进制。在解析是首先是检查第一个字符是不是 <code>-</code>,如果第二个不是<code>+</code>抛出异常。</p>
-<h5 id="对于Long-getLong-String-s-原理也是一样的，获取系统属性"><a href="#对于Long-getLong-String-s-原理也是一样的，获取系统属性" class="headerlink" title="对于Long.getLong(String s) 原理也是一样的，获取系统属性"></a>对于Long.getLong(String s) 原理也是一样的，获取系统属性</h5><h5 id="对于Boolean-getBoolean-String-这个感觉更坑"><a href="#对于Boolean-getBoolean-String-这个感觉更坑" class="headerlink" title="对于Boolean.getBoolean(String)这个感觉更坑"></a>对于Boolean.getBoolean(String)这个感觉更坑</h5><p><code>Boolean.getBoolean(&quot;true&quot;)</code>返回的false</p>
-<pre><code>public static boolean getBoolean(String name) {
-    boolean result = false;
-    try {
-        result = toBoolean(System.getProperty(name));
-    } catch (IllegalArgumentException e) {
-    } catch (NullPointerException e) {
-    }
-    return result;
-}
-</code></pre><p>###总结<br>为了不随意使用类方法引起血案在使用时一定要看看他的实现，同时也学习下别人的思想！</p>
-
+Host github.com 
+        HostName github.com  
+    PreferredAuthentications publickey
+    IdentityFile ~/.ssh/id_rsa_github_2
+</code></pre><h4 id="至此可以使用多个ssh-key了"><a href="#至此可以使用多个ssh-key了" class="headerlink" title="至此可以使用多个ssh_key了"></a>至此可以使用多个ssh_key了</h4>
       
     </div>
     
@@ -487,7 +392,7 @@ public static int parseInt(String s, int radix)
       
         <div class="post-tags">
           
-            <a href="/tags/Java-API/" rel="tag">#Java API</a>
+            <a href="/tags/git/" rel="tag">#git</a>
           
         </div>
       
@@ -496,12 +401,16 @@ public static int parseInt(String s, int radix)
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/04/19/Interger.getInteger/" rel="next" title="Integer.getInteger(String s)分析">
+                <i class="fa fa-chevron-left"></i> Integer.getInteger(String s)分析
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/08/08/ssh_key/" rel="prev" title="mac下配置多个ssh_key">
-                mac下配置多个ssh_key <i class="fa fa-chevron-right"></i>
+              <a href="/2016/08/08/深入理解java虚拟机/" rel="prev" title="Java虚拟机分析">
+                Java虚拟机分析 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -664,7 +573,7 @@ public static int parseInt(String s, int radix)
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#方法乱用"><span class="nav-number">1.</span> <span class="nav-text">方法乱用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Integer-parseInt-String-s"><span class="nav-number">1.0.1.</span> <span class="nav-text">Integer.parseInt(String s)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#对于Long-getLong-String-s-原理也是一样的，获取系统属性"><span class="nav-number">1.0.2.</span> <span class="nav-text">对于Long.getLong(String s) 原理也是一样的，获取系统属性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#对于Boolean-getBoolean-String-这个感觉更坑"><span class="nav-number">1.0.3.</span> <span class="nav-text">对于Boolean.getBoolean(String)这个感觉更坑</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在mac下配置多个ssh-key"><span class="nav-number">2.</span> <span class="nav-text">在mac下配置多个ssh_key</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#首先打开终端输入："><span class="nav-number">2.1.</span> <span class="nav-text">首先打开终端输入：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加代理"><span class="nav-number">2.2.</span> <span class="nav-text">添加代理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#至此可以使用多个ssh-key了"><span class="nav-number">2.3.</span> <span class="nav-text">至此可以使用多个ssh_key了</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
