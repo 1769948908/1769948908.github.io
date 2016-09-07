@@ -80,15 +80,19 @@
 
 
 
-<meta name="description">
-<meta property="og:type" content="website">
+<meta name="description" content="##Java并发
+我们知道多任务处理在现在计算机领域是一项必备的技能了。在许多情况下让计算机同时去做几件事情，这不仅仅是计算机具有强大的计算能力，还有一个重要的原因就是计算机与存储的通信和他的运行速度相比差距太大。除了充分利用计算机的处理器能力，通常是一个服务端同时对多个客户端提供服务也是一个更加具体的并发应用场景。通常用TPS(Transactions Per Second)每秒事务处理个数，来">
+<meta property="og:type" content="article">
 <meta property="og:title" content="个人博客">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="http://yoursite.com/2016/09/07/Java并发知识体系/index.html">
 <meta property="og:site_name" content="个人博客">
-<meta property="og:description">
+<meta property="og:description" content="##Java并发
+我们知道多任务处理在现在计算机领域是一项必备的技能了。在许多情况下让计算机同时去做几件事情，这不仅仅是计算机具有强大的计算能力，还有一个重要的原因就是计算机与存储的通信和他的运行速度相比差距太大。除了充分利用计算机的处理器能力，通常是一个服务端同时对多个客户端提供服务也是一个更加具体的并发应用场景。通常用TPS(Transactions Per Second)每秒事务处理个数，来">
+<meta property="og:updated_time" content="2016-09-07T01:36:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="个人博客">
-<meta name="twitter:description">
+<meta name="twitter:description" content="##Java并发
+我们知道多任务处理在现在计算机领域是一项必备的技能了。在许多情况下让计算机同时去做几件事情，这不仅仅是计算机具有强大的计算能力，还有一个重要的原因就是计算机与存储的通信和他的运行速度相比差距太大。除了充分利用计算机的处理器能力，通常是一个服务端同时对多个客户端提供服务也是一个更加具体的并发应用场景。通常用TPS(Transactions Per Second)每秒事务处理个数，来">
 
 
 
@@ -106,7 +110,7 @@
   };
 </script>
 
-  <title> 个人博客 </title>
+  <title>  | 个人博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -127,9 +131,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -226,9 +228,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -249,9 +251,6 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/07/Java并发知识体系/" itemprop="url">
-                  未命名
-                </a>
               
             
           </h1>
@@ -291,9 +290,7 @@
       
 
       
-        
-          
-            <p>##Java并发</p>
+        <p>##Java并发</p>
 <p>我们知道多任务处理在现在计算机领域是一项必备的技能了。在许多情况下让计算机同时去做几件事情，这不仅仅是计算机具有强大的计算能力，还有一个重要的原因就是计算机与存储的通信和他的运行速度相比差距太大。除了充分利用计算机的处理器能力，通常是一个服务端同时对多个客户端提供服务也是一个更加具体的并发应用场景。通常用TPS(Transactions Per Second)每秒事务处理个数，来描述服务的性能好坏，它代表着服务端一秒内平均能响应的请求总数，TPS与程序的并大能力有着密切的关系，程序的线程并发协调的越好，效率就会越高，反之，若出现线程阻塞的现象，将会大大的降低线程的并发能力。</p>
 <h3 id="Java并发的几个基本概念"><a href="#Java并发的几个基本概念" class="headerlink" title="Java并发的几个基本概念"></a>Java并发的几个基本概念</h3><ul>
 <li>线程，被称为轻量级进程(Lightweight Process，LWP），是程序执行流的最小单元，共享内存。</li>
@@ -346,16 +343,18 @@
 <h4 id="管理类"><a href="#管理类" class="headerlink" title="管理类"></a>管理类</h4><p>管理类的概念比较泛，用于管理线程，本身不是多线程的，但提供了一些机制来利用上述的工具做一些封装。<br>Java值得一提的管理类：ThreadPoolExecutor和 JMX框架下的系统级管理类 ThreadMXBean<br>ThreadPoolExecutor</p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>文章中收集了些信息，介绍了java并发的体系，很多还没有深入研究过介绍的很浅，希望在今后的工作中一点一点去深入学习,然后补充其原理。文章中如有不对的地方欢迎大家指正。</p>
 
-          
-        
       
     </div>
     
     <div>
       
+        
+      
     </div>
 
     <div>
+      
+        
       
     </div>
 
@@ -363,657 +362,55 @@
       
 
       
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/08/16/mac idea快捷键/" rel="next" title="mac下Idea快捷键">
+                <i class="fa fa-chevron-left"></i> mac下Idea快捷键
+              </a>
             
-              
-                
-                <a class="post-title-link" href="/2016/08/16/mac idea快捷键/" itemprop="url">
-                  mac下Idea快捷键
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-16T16:40:00+08:00" content="2016-08-16">
-              2016-08-16
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/mac/" itemprop="url" rel="index">
-                    <span itemprop="name">mac</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>alt+f7查找在哪里使用 相当于eclipse的ctrl+shift+G</p>
-<p>command+alt+f7 这个是查找选中的字符在工程中出现的地方，可以不是方法变量类等，这个和上面的有区别的</p>
-<p>command＋F7可以查询当前元素在当前文件中的引用，然后按F3可以选择 ，功能基本同上</p>
-<p>选中文本，按command+shift+F7 ，高亮显示所有该文本，按Esc高亮消失。<br>选中文本，按Alt+F3 ，逐个往下查找相同文本，并高亮显示。shift+f3就是往上找</p>
-<p>ctrl+enter 出现生成get,set方法的界面</p>
-<p>shift+enter 换到下一行</p>
-<p>command+N 查找类</p>
-<p>command+shift+N 查找文件</p>
-<p>command+R 替换</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/16/mac idea快捷键/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
           </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
 
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+          <div class="post-nav-prev post-nav-item">
             
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/08/README.en/" itemprop="url">
-                  Next
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-08T23:36:26+08:00" content="2016-08-08">
-              2016-08-08
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Next/" itemprop="url" rel="index">
-                    <span itemprop="name">Next</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="NexT"><a href="#NexT" class="headerlink" title="NexT"></a>NexT</h1><blockquote>
-<p>NexT is a high quality elegant <a href="http://hexo.io">Hexo</a> theme. It is crafted from scratch, with love.</p>
-</blockquote>
-<p><a href="http://notes.iissnan.com">Live Preview</a></p>
-<h2 id="Screenshots"><a href="#Screenshots" class="headerlink" title="Screenshots"></a>Screenshots</h2><ul>
-<li><p>Desktop<br><img src="http://iissnan.com/nexus/next/desktop-preview.png" alt="Desktop Preview"></p>
-</li>
-<li><p>Sidebar</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/08/README.en/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
           </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
+        </div>
       
 
       
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
+
+    <div class="post-spread">
       
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/08/ssh_key/" itemprop="url">
-                  mac下配置多个ssh_key
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-08T17:58:26+08:00" content="2016-08-08">
-              2016-08-08
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/git/" itemprop="url" rel="index">
-                    <span itemprop="name">git</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><link rel="stylesheet" href="http://yandex.st/highlightjs/6.1/styles/default.min.css"></p>
-<script src="http://yandex.st/highlightjs/6.1/highlight.min.js"></script>
-<script>
-hljs.tabReplace = ' ';
-hljs.initHighlightingOnLoad();
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
 </script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
 
-
-<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p> 我们经常在同一台电脑向不同的仓库提交代码，比如一个是是要使用公司的git仓库，一个是自己的github，为了不用每次都输入密码，我们会配置ssh key。  </p>
-<h3 id="在mac下配置多个ssh-key"><a href="#在mac下配置多个ssh-key" class="headerlink" title="在mac下配置多个ssh_key"></a>在mac下配置多个ssh_key</h3><h4 id="首先打开终端输入："><a href="#首先打开终端输入：" class="headerlink" title="首先打开终端输入："></a>首先打开终端输入：</h4><pre><code>ssh-keygen -t rsa -C &quot;email@qq.com&quot;
-输入文件名称：如id_rsa_githu_1
-Enter file in which to save the key (/Users/huifei.lhf/.ssh/id_rsa): id_rsa_githu_1 
-一路Enter下去  
-
-创建第二个
-ssh-keygen -t rsa -C &quot;email@qq.com&quot;
-输入文件名称：如id_rsa_githu_1
-Enter file in which to save the key (/Users/huifei.lhf/.ssh/id_rsa): id_rsa_githu_2
-一路Enter下去 
-</code></pre>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/08/ssh_key/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
       
     </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/08/深入理解java虚拟机/" itemprop="url">
-                  Java虚拟机分析
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-08T17:58:26+08:00" content="2016-08-08">
-              2016-08-08
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>Java作为目前使用最多，使用范围最广泛的开发语言，说明其在技术上还是有很大的优点的。我们都知道Java是一种跨平台的语言，通俗的讲就是一份代码可以到各种系统平台上运行，这样减少了更换平台引起的代码兼容等一系列的问题。Java的这种实现原理就是因为Java提供了一种虚拟机-Jvm，Java代码的编译运行都是在虚拟机上的，由虚拟机翻译成机器码执行。最近学习了些Jvm的知识，在这里做个记录总结，有理解错误的地方，欢迎指正。  </p>
-<hr>
-<h2 id="Java的内存区域和内存溢出的异常"><a href="#Java的内存区域和内存溢出的异常" class="headerlink" title="Java的内存区域和内存溢出的异常"></a>Java的内存区域和内存溢出的异常</h2><p>我们知道Java虚拟机有良好的内存管理机制，不需要手动的为new出来的对象去写delete/free代码，虽然在JVN的管理下不容易出现内存的问题，但是一旦出现，如果不了解Java的内存机制，排查问题又变的困难。</p>
-<h3 id="Java的内存区域"><a href="#Java的内存区域" class="headerlink" title="Java的内存区域"></a>Java的内存区域</h3><p>Java虚拟机在执行Java程序的过程中会把他所管理的内存划分为若干个不同的数据区域，根据Java虚拟机规范的规定JVM所管理的内存主要是由以下几个运行时数据区域：程序计数器、Java虚拟机栈、本地方法栈、Java堆、方法区。下面详细介绍各个区域。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/08/深入理解java虚拟机/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/19/Interger.getInteger/" itemprop="url">
-                  Integer.getInteger(String s)分析
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-19T17:58:26+08:00" content="2016-04-19">
-              2016-04-19
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><link rel="stylesheet" href="http://yandex.st/highlightjs/6.1/styles/default.min.css"></p>
-<script src="http://yandex.st/highlightjs/6.1/highlight.min.js"></script>
-<script>
-hljs.tabReplace = ' ';
-hljs.initHighlightingOnLoad();
-</script>
-
-
-
-<h3 id="方法乱用"><a href="#方法乱用" class="headerlink" title="方法乱用"></a>方法乱用</h3><p>场景：需要将一个String类型的转为int类型<br>实现：使用Integer中的方法</p>
-<pre><code>public class IntegerTest {
-    public static void main(String [] args){
-        String str = &quot;22&quot;;
-        System.out.println(Integer.getInteger(str));
-        System.out.println(Integer.valueOf(str));
-        System.out.println(Integer.parseInt(str));
-    }
-}
-期待输出：
-22
-22
-22
-实际输出：
-null
-22
-22
-</code></pre>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/19/Interger.getInteger/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-  </section>
-
-  
+  </div>
 
 
           </div>
@@ -1021,6 +418,10 @@ null
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -1040,8 +441,17 @@ null
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/322901.jpg"
@@ -1120,6 +530,17 @@ null
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Java并发的几个基本概念"><span class="nav-number">1.</span> <span class="nav-text">Java并发的几个基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程的状态"><span class="nav-number">2.</span> <span class="nav-text">线程的状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程安全"><span class="nav-number">3.</span> <span class="nav-text">线程安全</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#synchronized关键字"><span class="nav-number">3.1.</span> <span class="nav-text">synchronized关键字</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#volatile"><span class="nav-number">3.2.</span> <span class="nav-text">volatile</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本线程类"><span class="nav-number">4.</span> <span class="nav-text">基本线程类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#信号量"><span class="nav-number">5.</span> <span class="nav-text">信号量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#高级多线程控制类"><span class="nav-number">6.</span> <span class="nav-text">高级多线程控制类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ThreadLocal类"><span class="nav-number">6.1.</span> <span class="nav-text">ThreadLocal类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#原子类"><span class="nav-number">6.2.</span> <span class="nav-text">原子类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Lock类"><span class="nav-number">6.3.</span> <span class="nav-text">Lock类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#容器类"><span class="nav-number">6.4.</span> <span class="nav-text">容器类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#管理类"><span class="nav-number">6.5.</span> <span class="nav-text">管理类</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">7.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -1225,6 +646,10 @@ null
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
